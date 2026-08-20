@@ -3,12 +3,25 @@ package ifrn.pi.eventos.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import ifrn.pi.eventos.models.Evento;
+
 @Controller
 public class EventosController {
 	
 	@RequestMapping("/eventos/form")
 	public String form() {
 		return "formEvento";
+	}
+	
+	public String cadastrarEvento(Evento evento) {
+		System.out.println("Cadastrando");
+		
+		System.out.println("Nome:" + evento.getNome());
+		System.out.println("Local:" + evento.getLocal());
+		System.out.println("Data:" + evento.getData());
+		System.out.println("Horário:" + evento.getHorario());
+		
+		return "home";
 	}
 
 }
