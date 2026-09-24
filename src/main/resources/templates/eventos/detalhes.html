@@ -48,19 +48,19 @@
 					<div class="card-content">
 						<span class="card-title">Adicionar Convidado</span>
 						<form th:action="@{/eventos/{idEvento}(idEvento=${evento.id})}"
-							method="post">
+							method="post" th:object="${convidado}">
 							<div>
 								<!-- Utilizado ?. para não quebrar quando convidado for nulo/novo -->
-								<input type="hidden" name="id" th:value="${convidado?.id}"
+								<input type="hidden" th:field="*{id}"
 									readonly="readonly">
 							</div>
 							<div>
-								<label>Nome: </label> <input type="text" name="nome"
-									th:value="${convidado?.nome}">
+								<label>Nome: </label> <input type="text" th:field="*{nome}">
+								<p th:errors="*{nome}"></p>
 							</div>
 							<div>
-								<label>RG: </label> <input type="text" name="rg"
-									th:value="${convidado?.rg}">
+								<label>RG: </label> <input type="text" th:field="*{rg}">
+								<p th:errors="*{rg}"></p>
 							</div>
 							<div>
 								<button type="submit" class="btn">Salvar</button>
